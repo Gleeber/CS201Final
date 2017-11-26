@@ -1,7 +1,13 @@
 // main.cpp
 
 #include "cardgames.hpp"
-#include <iostream>
-using std::cin;
-using std::cout;
-using std::endl;
+
+int main() {
+    cout << "What game do you want to play?: ";
+    string input;
+    getline(cin, input);
+    if (input == "blackjack") {
+        blackjack();
+    }
+    return 0;
+}

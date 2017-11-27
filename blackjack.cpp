@@ -4,4 +4,5 @@
 
 void blackjack() {
     cout << "Running blackjack:" << endl;
+    dealBlackjack();
 }

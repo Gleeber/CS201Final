@@ -18,12 +18,4 @@ using std::vector;
 
 void blackjack();
 
-void dealBlackjack();
-
-class Card {
-private:
-    char _value;
-    char _suit;
-};
-
 #endif //#ifndef FILE_CARDGAMES_HPP_INCLUDED

@@ -33,7 +33,7 @@ vector<string> Deck::deal(int numCards, vector<string> &dealFrom) {
     for (int i = 0; i < numCards; i++) {
         random_device rd;
         mt19937 gen(rd());
-        std::__1::uniform_int_distribution<int> distrib1(1,dealFrom.size());
+        std::uniform_int_distribution<int> distrib1(1,dealFrom.size());
         int cardSpot = distrib1(gen);
         dealtCards.push_back(dealFrom[cardSpot]);
         dealFrom.erase(dealFrom.begin() + cardSpot);

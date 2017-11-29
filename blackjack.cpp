@@ -2,6 +2,7 @@
 
 #include "cardgames.hpp"
 #include "deck.hpp"
+#include "wallet.hpp"
 
 //ask the user if they want another card
 bool player1() {
@@ -82,6 +83,7 @@ bool dealerLogic(vector<string> hands,vector<string> deck) {
 	showCards(hands);
 	if (cardTotal(hands) > 21) {
 		cout << "DEALR BUST! YOU WIN!" << endl;
+        Wallet::win();
 		return false;
 	}
 	return true;
@@ -90,6 +92,7 @@ bool dealerLogic(vector<string> hands,vector<string> deck) {
 void blackjack() {
     while (true) {
         cout << "Starting a game of blackjack..." << endl << endl;
+        while(!Wallet::setBet());
         vector<string> cards = Deck::getDeck();
         cout << "Dealing cards..." << endl << endl;
 		vector<string> playerCards = Deck::deal(2, cards);//player gets his card
@@ -116,6 +119,7 @@ void blackjack() {
 
 				if (cardTotal(playerCards) > cardTotal(dealerCards)) {
 					cout << "You have won against the Dealer." << endl;
+                    Wallet::win();
 				}
 				else {
 					cout << "You have lost against the Dealer." << endl;
@@ -124,10 +128,12 @@ void blackjack() {
 		}
 		
         else if (cardTotal(playerCards) == 21) {
-            cout << "you got a blackajck babyyyeuejjj" << endl;
+            cout << "you got a blackajck babyyyyy :DDDDD" << endl;
+            Wallet::win();
         }
         else {
             cout << "You busted ya idiot! haha xD git gud scrub nub ggnore" << endl;
         }
+        Wallet::showWallet();
     }
 }

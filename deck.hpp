@@ -17,6 +17,7 @@ using std::vector;
 class Deck {
 public:
     static vector<string> deal(int numCards, vector<string> &dealFrom);
+    static string plusOneCard(vector<string> &dealFrom);
     static vector<string> getDeck();
 private:
     static vector<string> deckBase;

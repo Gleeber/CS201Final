@@ -18,4 +18,6 @@ using std::vector;
 
 void blackjack();
 
+void fullDeck();
+
 #endif //#ifndef FILE_CARDGAMES_HPP_INCLUDED

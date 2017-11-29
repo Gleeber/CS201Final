@@ -1,5 +1,5 @@
 //
-//  walet.hpp
+//  wallet.hpp
 //  CS201FinalLocal
 //
 //  Created by Andrew Adler on 11/29/17.

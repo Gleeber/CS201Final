@@ -1,4 +1,4 @@
-// currency.cpp
+// Wallet.cpp
 // Andrew Adler and Adrian Antonio
 // 11/29/17
 // This program manages the currency for the player

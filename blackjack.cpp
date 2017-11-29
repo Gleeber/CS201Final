@@ -75,11 +75,16 @@ void showCards(vector<string> hand) {
     }
     cout << endl << "Total is: " << cardTotal(hand) << endl;
 }
-void dealerLogic(vector<string> hands,vector<string> deck) {
+bool dealerLogic(vector<string> hands,vector<string> deck) {
 	while (cardTotal(hands) < 17) {
 		hands.push_back(Deck::plusOneCard(deck));	
 	}
 	showCards(hands);
+	if (cardTotal(hands) > 21) {
+		cout << "DEALR BUST! YOU WIN!" << endl;
+		return false;
+	}
+	return true;
 }
 
 void blackjack() {
@@ -104,14 +109,11 @@ void blackjack() {
             }
             showCards(playerCards);
         }
-        if (cardTotal(playerCards) < 21) {
+		if (cardTotal(playerCards) < 21) {
 			cout << endl;
 			cout << "Dealer's" << endl;
-			dealerLogic(dealerCards, cards);
-			if (cardTotal(dealerCards) > 21) {
-				cout << "DEALR BUST! YOU WIN!" << endl;
-			}
-			else {
+			if (dealerLogic(dealerCards, cards)) {
+
 				if (cardTotal(playerCards) > cardTotal(dealerCards)) {
 					cout << "You have won against the Dealer." << endl;
 				}
@@ -119,7 +121,8 @@ void blackjack() {
 					cout << "You have lost against the Dealer." << endl;
 				}
 			}
-        }
+		}
+		
         else if (cardTotal(playerCards) == 21) {
             cout << "you got a blackajck babyyyeuejjj" << endl;
         }

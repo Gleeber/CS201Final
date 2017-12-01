@@ -3,6 +3,9 @@
 #include "cardgames.hpp"
 #include "deck.hpp"
 #include "wallet.hpp"
+#include <string>
+using std::string;
+using std::getline;
 
 //ask the user if they want another card
 bool player1() {
@@ -90,28 +93,28 @@ bool dealerLogic(vector<string> hands,vector<string> deck) {
 }
 
 void blackjack() {
-    while (true) {
-        cout << "Starting a game of blackjack..." << endl << endl;
-        while(!Wallet::setBet());
-        vector<string> cards = Deck::getDeck();
-        cout << "Dealing cards..." << endl << endl;
+	while (Wallet::getWallet()>0) {
+		cout << "Starting a game of blackjack..." << endl << endl;
+		while (!Wallet::setBet());
+		vector<string> cards = Deck::getDeck();
+		cout << "Dealing cards..." << endl << endl;
 		vector<string> playerCards = Deck::deal(2, cards);//player gets his card
 		showCards(playerCards);
 		vector<string> dealerCards = Deck::deal(2, cards);//dealer gets his card
 		cout << endl << "Dealer's Hand: " << dealerCards[0] << endl;
 
 
-        //gives a card
-        while (cardTotal(playerCards) < 21) {
-            if (player1()) {
-                playerCards.push_back(Deck::plusOneCard(cards));
-            }
-            else {
-                showCards(playerCards);
-                break;
-            }
-            showCards(playerCards);
-        }
+		//gives a card
+		while (cardTotal(playerCards) < 21) {
+			if (player1()) {
+				playerCards.push_back(Deck::plusOneCard(cards));
+			}
+			else {
+				showCards(playerCards);
+				break;
+			}
+			showCards(playerCards);
+		}
 		if (cardTotal(playerCards) < 21) {
 			cout << endl;
 			cout << "Dealer's" << endl;
@@ -120,20 +123,32 @@ void blackjack() {
 					cout << "You have won against the Dealer." << endl;
 					Wallet::win();
 				}
-				if (cardTotal(dealerCards) == cardTotal(playerCards)) {
-					cout << "it's a tie" << endl;
+				else {
+					cout << "You have lost against the Dealer." << endl;
 				}
-				cout << "You have lost against the Dealer." << endl;
+			}
+			if (cardTotal(dealerCards) == cardTotal(playerCards)) {
+				cout << "it's a tie" << endl;
+				Wallet::tie();
 			}
 		}
-		
-        else if (cardTotal(playerCards) == 21) {
-            cout << "you got a blackajck babyyyyy :DDDDD" << endl;
-            Wallet::win();
-        }
-        else {
-            cout << "You busted ya idiot! haha xD git gud scrub nub ggnore" << endl;
-        }
-        Wallet::showWallet();
-    }
+
+		else if (cardTotal(playerCards) == 21) {
+			cout << "you got a blackajck babyyyyy :DDDDD" << endl;
+			Wallet::win();
+		}
+		else {
+			cout << "You busted ya idiot! haha xD git gud scrub nub ggnore" << endl;
+		}
+		Wallet::showWallet();
+		cout << "Do you want to continue playing Blackjack?" << endl << "Enter \"yes\" or \"no\": "<<endl;
+		string continuePlaying;
+		getline(cin, continuePlaying);
+		if (continuePlaying== "yes") {
+			continue;
+		}
+		break;
+	}
+	
 }
+

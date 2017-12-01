@@ -13,7 +13,9 @@ class Wallet {
 public:
     static bool setBet();
     static void win();
+	static void tie();
     static void showWallet();
+	static int getWallet();
 private:
     static int _currentMoney;
     static int _wager;

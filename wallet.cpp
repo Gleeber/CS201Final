@@ -57,3 +57,11 @@ void Wallet::win() {
 void Wallet::showWallet() {
     cout << "Your current balance is: " << Wallet::_currentMoney << endl;
 }
+
+void Wallet::tie() {
+	Wallet::_currentMoney += Wallet::_wager;
+}
+
+int Wallet::getWallet() {
+	return Wallet::_currentMoney;
+}

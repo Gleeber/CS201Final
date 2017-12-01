@@ -116,14 +116,14 @@ void blackjack() {
 			cout << endl;
 			cout << "Dealer's" << endl;
 			if (dealerLogic(dealerCards, cards)) {
-
 				if (cardTotal(playerCards) > cardTotal(dealerCards)) {
 					cout << "You have won against the Dealer." << endl;
-                    Wallet::win();
+					Wallet::win();
 				}
-				else {
-					cout << "You have lost against the Dealer." << endl;
+				if (cardTotal(dealerCards) == cardTotal(playerCards)) {
+					cout << "it's a tie" << endl;
 				}
+				cout << "You have lost against the Dealer." << endl;
 			}
 		}
 		

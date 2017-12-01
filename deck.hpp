@@ -1,10 +1,7 @@
-//
-//  deck.hpp
-//  CS201FinalLocal
-//
-//  Created by Andrew Adler on 11/27/17.
-//  Copyright © 2017 Andrew Adler. All rights reserved.
-//
+// deck.hpp
+// Andrew Adler and Adrian Antonio
+// 12/01/17
+// This is the header file for the Deck class
 
 #ifndef FILE_DECK_HPP_INCLUDED
 #define FILE_DECK_HPP_INCLUDED
@@ -16,9 +13,10 @@ using std::vector;
 
 class Deck {
 public:
+    static vector<string> getDeck();
+    
     static vector<string> deal(int numCards, vector<string> &dealFrom);
     static string plusOneCard(vector<string> &dealFrom);
-    static vector<string> getDeck();
 private:
     static vector<string> deckBase;
 };

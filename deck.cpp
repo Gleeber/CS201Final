@@ -1,6 +1,13 @@
 // deck.cpp
+// Andrew Adler and Adrian Antonio
+// 12/01/17
+// This is the source code for the Deck class, which is used with games that require a deck
 
 #include "deck.hpp"
+
+#include <iostream>
+using std::cout;
+using std::endl;
 #include <string>
 using std::string;
 #include <vector>
@@ -10,6 +17,7 @@ using std::random_device;
 using std::mt19937;
 using std::uniform_int_distribution;
 
+// The deck base that is copied to games that use a deck of cards
 vector<string> Deck::deckBase = {
     "A♠", "A♥", "A♣", "A♦",
     "2♠", "2♥", "2♣", "2♦",
@@ -25,10 +33,12 @@ vector<string> Deck::deckBase = {
     "Q♠", "Q♥", "Q♣", "Q♦",
     "K♠", "K♥", "K♣", "K♦"};
 
+// Function used to copy the deck base
 vector<string> Deck::getDeck() {
     return deckBase;
 }
 
+// Deals cards to the player and dealer initially
 vector<string> Deck::deal(int numCards, vector<string> &dealFrom) {
     vector<string> dealtCards;
     for (int i = 0; i < numCards; i++) {
@@ -42,6 +52,7 @@ vector<string> Deck::deal(int numCards, vector<string> &dealFrom) {
     return dealtCards;
 }
 
+// Adding one card to the player or dealer's hands
 string Deck::plusOneCard(vector<string> &dealFrom) {
     vector<string> dealtCards;
     random_device rd;

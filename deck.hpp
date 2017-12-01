@@ -13,12 +13,12 @@ using std::vector;
 
 class Deck {
 public:
-    static vector<string> getDeck();
+    static vector<string> getDeck(); // Makes a copy of the deck
     
-    static vector<string> deal(int numCards, vector<string> &dealFrom);
-    static string plusOneCard(vector<string> &dealFrom);
+    static vector<string> deal(int numCards, vector<string> &dealFrom); // Deals a hand
+    static string plusOneCard(vector<string> &dealFrom); // Adds one card to the hand
 private:
-    static vector<string> deckBase;
+    static vector<string> deckBase; // The deck base that is copied to games that use a deck of cards
 };
 
 #endif // #ifndef FILE_DECK_HPP_INCLUDED

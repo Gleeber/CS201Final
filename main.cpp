@@ -81,8 +81,7 @@ int main() {
     if (Wallet::getWallet() < 1) {
         cout << "You ran out of money..." << endl << "Leaving the casino." << endl << endl;
     }
-    
-	cout << "Press ENTER to quit ";
-	while (cin.get() != '\n');
-	return 0;
+//	cout << "Press ENTER to quit ";
+//	while (cin.get() != '\n');
+//	return 0;
 }

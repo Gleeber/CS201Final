@@ -95,8 +95,9 @@ void slots(bool free) { // "free" is true when a game is played by matching thre
             if (slotResults[0] == slotResults[1] && slotResults[0] == slotResults[2]) {
                 Wallet::slotsWin(slotSpot);
             }
-            
-            Wallet::showWallet();
+            if (!free) {
+                Wallet::showWallet();
+            }
         }
         
         if (free) { // So that it only runs once when the player matches three Replays
